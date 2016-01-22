@@ -8,6 +8,8 @@ MfeatAnalysis.Rproj
 NAMESPACE
 DESCRIPTION
 
+R/dcol/
+
 # temporary files
 temp/
 output/
