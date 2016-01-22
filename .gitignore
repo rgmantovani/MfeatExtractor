@@ -2,12 +2,12 @@
 .Rhistory
 .Rapp.history
 
-# Example code in package build process
-*-Ex.R
+.RData
+MfeatAnalysis.Rproj
+.Rbuildignore
+NAMESPACE
+DESCRIPTION
 
-# RStudio files
-.Rproj.user/
-
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
+# temporary files
+temp/
+output/
