@@ -27,7 +27,7 @@
       # Just for tests
       nfeat = ncol(dataset$data)
       nexamp = nrow(dataset$data)
-      if(nfeat > 100 || nexamp > 10000) {
+      if(nfeat > 100 || nexamp > 10000 || nexamp < 100) {
         catf("   - skipping for now ")
         catf(" ----------------------------- ")
         return (NULL)
@@ -43,7 +43,7 @@
         }
 
         dataset = dataStandardization(dataset)
-        printDatasetInto(dataset)
+        printDatasetInfo(dataset)
         dataset = dataPreprocessing(dataset)
         all = getMetaFeatures(dataset)
         

@@ -10,6 +10,7 @@ DESCRIPTION
 
 R/dcol/
 
+debug.R
+
 # temporary files
-temp/
 output/

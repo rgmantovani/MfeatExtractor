@@ -41,7 +41,7 @@ runningExtraction = function() {
 
         #Put data in the required standard
         dataset = dataStandardization(dataset)
-        printDatasetInto(dataset)
+        printDatasetInfo(dataset)
 
         #data preprocessing step (imputation, etc)
         dataset = dataPreprocessing(dataset)
@@ -71,7 +71,7 @@ runningExtraction = function() {
   ids = do.call("rbind", lapply(aux, function(elem){elem$id}))
   names = do.call("rbind", lapply(aux, function(elem){elem$name}))
   temp = cbind(ids, names, feat)
-  colnames(temp) = c("dataset.id", "dataset.name", STAT, COMPLEX) #, CNET)
+  colnames(temp) = c("dataset.id", "dataset.name", STAT, COMPLEX, CNET)
  
   cat(" - Exporting meta-dataset. \n")
   save("temp", file="meta_features.RData")
