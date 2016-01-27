@@ -25,9 +25,12 @@ runningExtraction = function() {
 
     if(!is.null(dataset)) {
       
-      if(nrow(dataset$data) > 10000) {
-        catf("   - Skipping for now.")
-	      return(NULL)
+      nfeat = ncol(dataset$data) - 1
+      nexamp = nrow(dataset$data)
+      if(nfeat > 100 || nexamp > 10000 || nexamp < 100) {
+        catf("   - Skipping for now: too few or too much examples")
+        catf(" ----------------------------- ")
+        return (NULL)
       }
     
       obj = NULL
@@ -66,14 +69,13 @@ runningExtraction = function() {
     return(NULL)
   
   })
-
+  
   feat = as.data.frame(do.call("rbind", lapply(aux, function(elem){elem$features})))
   ids = do.call("rbind", lapply(aux, function(elem){elem$id}))
   names = do.call("rbind", lapply(aux, function(elem){elem$name}))
   temp = cbind(ids, names, feat)
   colnames(temp) = c("dataset.id", "dataset.name", STAT, COMPLEX, CNET)
  
-  cat(" - Exporting meta-dataset. \n")
   save("temp", file="meta_features.RData")
   write.csv(temp, file="meta_features.csv")
   

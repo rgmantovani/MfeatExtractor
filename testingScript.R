@@ -24,11 +24,9 @@
 
     if(!is.null(dataset)) {
     
-      # Just for tests
-      nfeat = ncol(dataset$data)
       nexamp = nrow(dataset$data)
-      if(nfeat > 100 || nexamp > 10000 || nexamp < 100) {
-        catf("   - skipping for now ")
+      if(nexamp > 30000 || nexamp < 100) {
+        catf("   - Skipping for now: too few or too much examples")
         catf(" ----------------------------- ")
         return (NULL)
       }
