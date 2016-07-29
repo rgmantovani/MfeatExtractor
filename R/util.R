@@ -10,11 +10,10 @@ printDatasetInfo = function(dataset) {
   cat("   - nExamples: ", nrow(dataset$data), "\n")
   cat("   - nClasses: ", length(levels(dataset$data$Class)), "\n")
   
-  # if(length(levels(dataset$data$Class)) == 0 ){
-    # stop()
-  # }
-
 }
+
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 
 getAttrType = function(dataset){
   
@@ -29,6 +28,9 @@ getAttrType = function(dataset){
   }))
   return(aux)
 }
+
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 
 puttingInStandard = function(dataset){
   flag = FALSE

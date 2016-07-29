@@ -43,7 +43,7 @@ dataPreprocessing = function(dataset){
 
   if(any(is.na(dataset$data))) {
     catf("   - Data imputation required ...")
-    temp = impute(data = dataset$data, classes = list(numeric = imputeMean(), factor = imputeMode()))
+    temp = impute(obj = dataset$data, classes = list(numeric = imputeMean(), factor = imputeMode()))
     dataset$data = temp$data
   }
   
@@ -57,24 +57,6 @@ dataPreprocessing = function(dataset){
 
   return(dataset)
 }
-
-# ---------------------------------------------------------------------------
-# ---------------------------------------------------------------------------
-  
-# classe com menos de 10 exemplos devem ser unidas
-# bindSmallClasses = function(openml.task) {
-
-#   data = openml.task$input$data.set$data
-#   # colnames(data)[ncol(data)] = "Class"
-
-#   freq = as.data.frame(table(data$Class))
-#   cl = freq[which(freq[, 2] < nFolds), 1]
-
-#   if (length(cl) >= 2) {
-#     catf("  preProcess: joining class levels with few examples ")
-#     task = joinClassLevels(task, new.levels = list( newclass = as.vector(cl)))
-#   }
-# }
 
 # ---------------------------------------------------------------------------
 # ---------------------------------------------------------------------------

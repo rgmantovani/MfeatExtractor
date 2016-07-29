@@ -1,10 +1,11 @@
 # History files
+
 .Rhistory
 .Rapp.history
 
-.RData
 MfeatAnalysis.Rproj
 .Rbuildignore
+
 NAMESPACE
 DESCRIPTION
 
@@ -14,3 +15,4 @@ debug.R
 
 # temporary files
 output/
+backup/

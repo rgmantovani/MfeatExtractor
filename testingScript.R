@@ -7,7 +7,8 @@
     dir.create("temp", recursive = TRUE)
   }
 
-  oml.data.ids = gettingOMLDataIds()#[300:517]
+  # oml.data.ids = gettingOMLDataIds()#[300:517]
+  oml.data.ids = getTaggedDatasets(tag = "study_14")
  
   catf(" ----------------------------- ")
   n = length(oml.data.ids)
@@ -25,12 +26,11 @@
     if(!is.null(dataset)) {
     
       nexamp = nrow(dataset$data)
-      if(nexamp > 30000 || nexamp < 100) {
+      if(nexamp > 60000 || nexamp < 100) {
         catf("   - Skipping for now: too few or too much examples")
         catf(" ----------------------------- ")
         return (NULL)
       }
-
       obj = NULL
       filename = paste0("temp/", dataset$desc$id, "_", dataset$desc$name, ".RData")
       if(!file.exists(filename)) {
@@ -70,7 +70,7 @@
   ids = do.call("rbind", lapply(aux, function(elem){elem$id}))
   names = do.call("rbind", lapply(aux, function(elem){elem$name}))
   temp = cbind(ids, names, feat)
-  colnames(temp) = c("dataset.id", "dataset.name", STAT, COMPLEX, CNET)
+  colnames(temp) = c("dataset.id", "dataset.name", STAT, COMPLEX) #, CNET)
  
   save("temp", file="meta_features.RData")
   write.csv(temp, file="meta_features.csv")

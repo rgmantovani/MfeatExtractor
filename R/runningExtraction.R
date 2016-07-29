@@ -8,7 +8,8 @@ runningExtraction = function() {
     dir.create("temp", recursive = TRUE)
   }
 
-  oml.data.ids = gettingOMLDataIds()
+  # oml.data.ids = gettingOMLDataIds()
+  oml.data.ids = getTaggedDatasets(tag = "study_14")
  
   catf(" ----------------------------- ")
   n = length(oml.data.ids)
@@ -25,9 +26,9 @@ runningExtraction = function() {
 
     if(!is.null(dataset)) {
       
-      nfeat = ncol(dataset$data) - 1
+      # nfeat = ncol(dataset$data) - 1
       nexamp = nrow(dataset$data)
-      if(nfeat > 100 || nexamp > 10000 || nexamp < 100) {
+      if(nexamp > 60000 || nexamp < 100) {
         catf("   - Skipping for now: too few or too much examples")
         catf(" ----------------------------- ")
         return (NULL)

@@ -26,16 +26,16 @@ getMetaFeatures = function(dataset) {
     temp = load(comp.file)
   }
 
-  cat("       -> Complex networks features ... \n")
-  cnet.file = paste0(dataset.dir, "/compNetFeatures.RData")
-  if(!file.exists(cnet.file)) {
-    cnet = getCompNetworkFeatures(dataset$data, epson = 0.15)
-    save(cnet, file = cnet.file)
-  }else{
-    temp = load(cnet.file)
-  }
+  # cat("       -> Complex networks features ... \n")
+  # cnet.file = paste0(dataset.dir, "/compNetFeatures.RData")
+  # if(!file.exists(cnet.file)) {
+  #   cnet = getCompNetworkFeatures(dataset$data, epson = 0.15)
+  #   save(cnet, file = cnet.file)
+  # }else{
+  #   temp = load(cnet.file)
+  # }
 
-  all = c(stat, comp, cnet)
+  all = c(stat, comp) #, cnet)
 
 	return(all)
 }
