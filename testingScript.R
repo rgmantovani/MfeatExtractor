@@ -5,17 +5,21 @@
 
   if(!dir.exists("temp")) {
     dir.create("temp", recursive = TRUE)
+  } else {
+    cat(" - TEMP dir already exists.\n")
   }
 
-  # oml.data.ids = gettingOMLDataIds()#[300:517]
+  # For testing purporses
   oml.data.ids = getTaggedDatasets(tag = "study_14")
+  oml.data.ids = setdiff(oml.data.ids, 4135)
+  oml.data.ids = oml.data.ids[1:10]
  
-  catf(" ----------------------------- ")
-  n = length(oml.data.ids)
-  aux = lapply(1:n, function(i){
+  aux = lapply(1:length(oml.data.ids), function(i){
 
+    catf(" ----------------------------- ")
+  
     id = oml.data.ids[i]
-    cat(" * ", i, "/", n ," - OML Dataset: \n")
+    cat(" * ", i, "/", length(oml.data.ids) ," - OML Dataset: \n")
     dataset = tryCatch({
       getOMLDataSet(did = id)
     }, error = function(e) {
@@ -24,56 +28,56 @@
     })
 
     if(!is.null(dataset)) {
-    
+
+      printDatasetInfo(dataset)
       nexamp = nrow(dataset$data)
       if(nexamp > 60000 || nexamp < 100) {
         catf("   - Skipping for now: too few or too much examples")
         catf(" ----------------------------- ")
         return (NULL)
       }
-      obj = NULL
-      filename = paste0("temp/", dataset$desc$id, "_", dataset$desc$name, ".RData")
-      if(!file.exists(filename)) {
 
-        dataset.dir = paste0("temp/", dataset$desc$id, "_", dataset$desc$name)
-        if(!dir.exists(dataset.dir)) {
-          dir.create(dataset.dir, recursive = TRUE)
-        }
-
-        dataset = dataStandardization(dataset)
-        printDatasetInfo(dataset)
-        dataset = dataPreprocessing(dataset)
-        all = getMetaFeatures(dataset)
-        
-        # unlink(dataset.dir, recursive = TRUE)
-        obj = list(id=dataset$desc$id, name=dataset$desc$name, features=all)
-        save(obj, file = filename)
-        obj = NULL
-     
-      } else {
-        cat(" - Features already extracted. \n")
-        catf(" ----------------------------- ")
-        temp = load(filename)
-        return(obj)
+      dataset.dir = paste0("temp/", dataset$desc$id, "_", dataset$desc$name)
+      if(!dir.exists(dataset.dir)) {
+        dir.create(dataset.dir, recursive = TRUE)
       }
-  
-      catf(" ----------------------------- ")
+
+      dataset = dataStandardization(dataset)
+      dataset = dataPreprocessing(dataset)
+      
+      all = getMetaFeatures(
+        dataset = dataset, 
+        statlog = TRUE, 
+        complex = TRUE, 
+        network = FALSE
+      )
+
+      obj = list(name = dataset$desc$name, feat = all)
       return(obj)
-    
     }
-    catf(" ----------------------------- ")
     return(NULL)
-  
   })
 
-  feat = as.data.frame(do.call("rbind", lapply(aux, function(elem){elem$features})))
-  ids = do.call("rbind", lapply(aux, function(elem){elem$id}))
+  meta.features = data.frame(do.call("rbind", lapply(aux, function(elem){elem$feat})))
+
   names = do.call("rbind", lapply(aux, function(elem){elem$name}))
-  temp = cbind(ids, names, feat)
-  colnames(temp) = c("dataset.id", "dataset.name", STAT, COMPLEX) #, CNET)
- 
-  save("temp", file="meta_features.RData")
-  write.csv(temp, file="meta_features.csv")
+  df2 = data.frame(cbind(oml.data.ids, names))
+  colnames(df2) = c("dataset.id", "dataset.name")
+
+  metabase = cbind(df2,meta.features)
+  output.filename = paste0("meta_base_",nrow(metabase),"_datasets_", (ncol(metabase)-2), "_features")
+
+  catf(" ----------------------------- ")
+  catf(" * Saving metabase with: ")
+  cat(paste0("  - datasets: ", nrow(metabase), "\n"))
+  cat(paste0("  - meta-features:", (ncol(metabase)-2), "\n"))
+
+  save("metabase", file = paste0(output.filename,".RData"))
+  write.csv(metabase, file = paste0(output.filename,".csv"))
+
+  catf(" ----------------------------- ")
+  catf(" End of execution !")
+  catf(" ----------------------------- ")
 
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------

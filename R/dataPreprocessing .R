@@ -38,11 +38,10 @@ removeConsFeat = function(dataset) {
 dataPreprocessing = function(dataset){
 
   catf(" * Preprocessing data:")
-
   dataset = removeConsFeat(dataset)
 
   if(any(is.na(dataset$data))) {
-    catf("   - Data imputation required ...")
+    catf("   - Data imputation required ... \n")
     temp = impute(obj = dataset$data, classes = list(numeric = imputeMean(), factor = imputeMode()))
     dataset$data = temp$data
   }
@@ -50,11 +49,20 @@ dataPreprocessing = function(dataset){
   # mlr removing constant features
   task = makeClassifTask(data = dataset$data, target = dataset$target.features)
   task = removeConstantFeatures(task)
-  
-  # task = normalizeFeatures(task, method = "standardize", exclude = character(0L), range = c(0, 1), 
-    # on.constant = "quiet")
-  dataset$data = task$env$data
+  dataset$data = task$env$data # REPLACE by: getTaskData(task)
 
+  return(dataset)
+}
+
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+
+puttingInStandard = function(dataset){
+  for(i in 1:(ncol(dataset$data))-1){
+    if(class(dataset$data[,i]) == "factor") {
+      dataset$data[,i] = as.numeric(dataset$data[,i]);
+    }
+  }
   return(dataset)
 }
 

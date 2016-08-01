@@ -1,7 +1,6 @@
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------
 
-library("foreign")
 library("R.utils")
 library("CORElearn")
 library("e1071")
@@ -16,13 +15,15 @@ library("igraph")
 library("OpenML")
 library("mlr")
 
-
-setOMLConfig(verbosity = 0)
-saveOMLConfig(apikey = "76444ac061f2b76258c96f680f0c6ae0", overwrite=TRUE)
-
 # home directory
 DIR = getwd()
 
+# OpenML settings
+setOMLConfig(verbosity = 0)
+saveOMLConfig(apikey = "76444ac061f2b76258c96f680f0c6ae0", overwrite=TRUE)
+
+
+# Statlog features names
 STAT = c("cls", "atr", "num", "nom", "spl", "dim", "numRate", "nomRate", "symMin", "symMax", 
   "symMan", "symSd", "symSum", "clMin", "clMax", "clMean", "clSd", "sks", "sksP", "kts", "ktsP", "absC",
    "canC", "fnd", "clEnt", "nClEnt", "atrEnt", "nAtrEnt", "jEnt", "mutInf", "eAttr", "noiSig", "node",
