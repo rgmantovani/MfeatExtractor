@@ -1,0 +1,20 @@
+# -------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------
+
+TODO list:
+
+- [tests/] Add Unit tests
+
+- [getData.R] Add a function that receives task ids and order them according 
+to the task dimension
+
+- [getTasks.R] Add a filter to check the arguments are valid or not
+
+- Add a function to check frequently if there is any new task, and extract its meta-features
+
+- [PRIORITY] Each subset of features will be treated as a learner
+
+- Join with the Timing features used with Tomas script
+
+# -------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------

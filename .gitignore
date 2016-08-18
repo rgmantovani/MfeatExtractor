@@ -8,6 +8,9 @@ R/dcol/
 
 debug.R
 
+*-files/
+
 # temporary files
 output/
 backup/
+error/

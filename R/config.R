@@ -14,23 +14,35 @@ library("igraph")
 
 library("OpenML")
 library("mlr")
+library("BBmisc")
+library("checkmate")
+library("BatchExperiments")
 
 # home directory
 DIR = getwd()
 
+# extract features
+GET.STATLOG = TRUE
+GET.COMPLEX = TRUE
+GET.NETWORK = FALSE
+
 # OpenML settings
-setOMLConfig(verbosity = 0)
+# Please, replace it by your own OpenML apikey
+# saveOMLConfig(apikey = "your openml api key", overwrite = TRUE)
 saveOMLConfig(apikey = "76444ac061f2b76258c96f680f0c6ae0", overwrite=TRUE)
 
+# mlr settings 
+configureMlr(on.learner.error = "warn")
+configureMlr(show.info = TRUE)
 
 # Statlog features names
 STAT = c("cls", "atr", "num", "nom", "spl", "dim", "numRate", "nomRate", "symMin", "symMax", 
-  "symMan", "symSd", "symSum", "clMin", "clMax", "clMean", "clSd", "sks", "sksP", "kts", "ktsP", "absC",
-   "canC", "fnd", "clEnt", "nClEnt", "atrEnt", "nAtrEnt", "jEnt", "mutInf", "eAttr", "noiSig", "node",
-    "leave", "nodeAtr", "nodeIns", "leafCor", "lMin", "lMax", "lMean", "lSd", "bMin", "bMax", "bMean", 
-    "bSd", "atrMin", "atrMax", "atrMean", "atrSd", "nb", "lda", "stMin", "stMax", "stMean", "stSd", 
-    "stMinGain", "stRand", "nn", "nnSd", "treeTime", "nbTime", "ldaTime", "stTime", "nnTime", "sTime", 
-    "staTime", "infTime", "ToTime")
+  "symMan", "symSd", "symSum", "clMin", "clMax", "clMean", "clSd", "sks", "sksP", "kts", 
+  "ktsP", "absC", "canC", "fnd", "clEnt", "nClEnt", "atrEnt", "nAtrEnt", "jEnt", "mutInf", 
+  "eAttr", "noiSig", "node", "leave", "nodeAtr", "nodeIns", "leafCor", "lMin", "lMax", "lMean",
+   "lSd", "bMin", "bMax", "bMean", "bSd", "atrMin", "atrMax", "atrMean", "atrSd", "nb", "lda",
+    "stMin", "stMax", "stMean", "stSd", "stMinGain", "stRand", "nn", "nnSd", "treeTime", 
+    "nbTime", "ldaTime", "stTime", "nnTime", "sTime", "staTime", "infTime", "ToTime")
 
 # linear metrics
 REPLACE = c("f1v", "l1", "l2", "l3")

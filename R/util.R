@@ -3,12 +3,16 @@
 
 printDatasetInfo = function(dataset) {
  
+  catf(" =========================== ")
   catf(" * Data info: ")
-  cat("   - Dataset id:",dataset$desc$id, "\n")
-  cat("   - Dataset name:",dataset$desc$name, "\n")
-  cat("   - nFeatures: ",(ncol(dataset$data)-1), "\n")
-  cat("   - nExamples: ",nrow(dataset$data), "\n")
-  cat("   - nClasses: ",length(levels(dataset$data[, dataset$target.features])), "\n")
+  catf(" =========================== ")
+  cat("   # dataset id:  ", dataset$desc$id, "\n")
+  cat("   # dataset name:", dataset$desc$name, "\n")
+  cat("   # features:    ", (ncol(dataset$data)-1), "\n")
+  cat("   # instances:   ", nrow(dataset$data), "\n")
+  cat("   # classes:     ", length(levels(dataset$data[, dataset$target.features])), "\n")
+  cat("   # missing:     ", any(is.na(dataset$data)), "\n")
+  catf(" =========================== ")
 }
 
 # ---------------------------------------------------------------------------

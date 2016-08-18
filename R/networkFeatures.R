@@ -19,7 +19,7 @@ basic = function(graph) {
 
 	edge = igraph::ecount(graph)
 	rate = mean(igraph::degree(graph))
-	aux = c(edge, rate)
+	aux  = c(edge, rate)
 	return(aux)
 }
 
@@ -37,7 +37,7 @@ density = function(graph) {
 
 componets = function(graph) {
 
-	tmp = igraph::clusters(graph, mode="weak")
+	tmp = igraph::clusters(graph, mode = "weak")
 	aux = max(tmp$csize)
 	return(aux)        
 }
@@ -85,7 +85,7 @@ giantComponent = function(graph) {
 clusterCof = function(graph) {
 
 	g = giantComponent(graph)
-	disthist = igraph::path.length.hist(g, directed=FALSE)$res
+	disthist = igraph::path.length.hist(g, directed = FALSE)$res
 
 	if(length(disthist) == 0) {
 		avg = 0
@@ -93,7 +93,7 @@ clusterCof = function(graph) {
 		avg = weighted.mean(1:length(disthist), disthist)
 	}
 
-	cof = igraph::transitivity(graph, type="undirected")
+	cof = igraph::transitivity(graph, type = "undirected")
 	aux = c(cof, avg)
 	return(aux)
 }
@@ -103,8 +103,8 @@ clusterCof = function(graph) {
 
 ennSup = function(data, epson) {
 
-	dst = as.matrix(dist(data[,-ncol(data)], method="minkowski"))
-	aux = matrix(0, nrow(data), nrow(data), dimnames=list(rownames(data), rownames(data)))
+	dst = as.matrix(dist(data[,-ncol(data)], method = "minkowski"))
+	aux = matrix(0, nrow(data), nrow(data), dimnames = list(rownames(data), rownames(data)))
 
 	for(i in 1:nrow(aux)) {
 		
@@ -123,7 +123,7 @@ ennSup = function(data, epson) {
 getCompNetworkFeatures = function(data, epson) {
 
 	aux = ennSup(data, epson)
-	graph = igraph::graph.adjacency(aux, mode="undirected")
+	graph = igraph::graph.adjacency(aux, mode = "undirected")
 	tmp = c(basic(graph), density(graph), componets(graph), centrality(graph), between(graph), 
 		hub(graph), clusterCof(graph))
 	

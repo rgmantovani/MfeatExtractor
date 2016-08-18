@@ -40,17 +40,13 @@ dataPreprocessing = function(dataset){
   catf(" * Preprocessing data:")
   dataset = removeConsFeat(dataset)
 
-  if(any(is.na(dataset$data))) {
-    catf("   - Data imputation required ... \n")
-    temp = impute(obj = dataset$data, classes = list(numeric = imputeMean(), factor = imputeMode()))
-    dataset$data = temp$data
-  }
+  catf("   - Data imputation required ... \n")
+  temp = impute(
+    obj = dataset$data, 
+    classes = list(numeric = imputeMean(), factor = imputeMode())
+  )
   
-  # mlr removing constant features
-  task = makeClassifTask(data = dataset$data, target = dataset$target.features)
-  task = removeConstantFeatures(task)
-  dataset$data = task$env$data # REPLACE by: getTaskData(task)
-
+  dataset$data = temp$data
   return(dataset)
 }
 
