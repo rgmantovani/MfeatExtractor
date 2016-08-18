@@ -4,6 +4,7 @@
 getBatchAlgoWrapper = function(extract.statlog, extract.complex, extract.network) {
   
   function(job, static, dynamic) {
+    
     # Show data information
     temp.data = static$dataset
     printDatasetInfo(temp.data)
