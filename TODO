@@ -16,13 +16,8 @@ to the task dimension
 
 - Join with the Timing features used with Tomas script
 
-
-
-
-DONE: 
-
-- ADD reduce script 
-
+- Track and Idenfity Sparse datasets (nor reading with farff)
+examples:  c(292, 394, 386, 392, 401, 350, 389, 383, 1112, 1114)
 
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------

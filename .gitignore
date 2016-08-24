@@ -3,6 +3,7 @@
 .Rhistory
 .Rapp.history
 .Rbuildignore
+*.txt 
 
 R/dcol/
 

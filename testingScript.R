@@ -4,7 +4,6 @@
   devtools::load_all()
 
   # unlink("test-files/", recursive = TRUE)
-  
   reg = makeExperimentRegistry(
     id = "test", 
     packages = c("ParamHelpers", "mlr", "OpenML"), 
@@ -20,7 +19,10 @@
   # For testing purporses
   data.ids = getTaggedDatasets(tag = "study_14")
   data.ids = setdiff(data.ids, 4135)
-  data.ids = data.ids[1:10]
+
+  # SPARSE.DATASETS = c(292, 394, 393, 386, 392, 401, 350, 389, 383, 1112, 1114, 396, 399)
+  # data.ids = setdiff(data.ids, SPARSE.DATASETS)
+  # data.ids = data.ids[1:15]
 
   # Creating new jobs
   new.jobs = batchmark(reg = reg, data.id = data.ids, overwrite = TRUE)

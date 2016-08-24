@@ -29,7 +29,8 @@ GET.NETWORK = FALSE
 # OpenML settings
 # Please, replace it by your own OpenML apikey
 # saveOMLConfig(apikey = "your openml api key", overwrite = TRUE)
-saveOMLConfig(apikey = "76444ac061f2b76258c96f680f0c6ae0", overwrite=TRUE)
+saveOMLConfig(apikey = "76444ac061f2b76258c96f680f0c6ae0", overwrite = TRUE)
+setOMLConfig(arff.reader = "RWeka")
 
 # mlr settings 
 configureMlr(on.learner.error = "warn")

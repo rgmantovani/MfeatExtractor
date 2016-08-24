@@ -10,6 +10,7 @@ reducingResults = function(reg){
 
   #information about the extraction (time needed to run the script)
   df = getJobInfo(reg, ids = findDone(reg))
+  write.csv(x = df, file = "output/extraction_time.csv")
 
   feat = BatchJobs::reduceResultsDataFrame(reg = reg, ids = findDone(reg))
   ret = cbind(df$prob, feat)

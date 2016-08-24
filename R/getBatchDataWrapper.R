@@ -7,7 +7,7 @@ getBatchDataWrapper = function(data.id) {
       cat("Getting OML Dataset: ", data.id, "\n")
       getOMLDataSet(did = data.id)
     }, error = function(e) {
-     cat("Error: dataset ", data.id, "is inactive!\n")
+     cat("Error: reading dataset ", data.id, "\n")
      NULL
   })
 

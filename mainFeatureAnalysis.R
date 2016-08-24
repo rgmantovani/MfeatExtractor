@@ -21,7 +21,6 @@ main = function() {
   # For testing purporses
   data.ids = getTaggedDatasets(tag = "study_14")
   data.ids = setdiff(data.ids, 4135)
-  data.ids = data.ids[1:5]
 
   # Creating new jobs
   new.jobs = batchmark(reg = reg, data.id = data.ids, overwrite = TRUE)
@@ -37,7 +36,7 @@ main = function() {
   all.jobs = setdiff(findNotDone(reg), findErrors(reg))
   print(all.jobs)
 
-  # catf(" * Submitting all jobs ...")
+  catf(" * Submitting all jobs ...")
   submitJobs(
     reg = reg, 
     ids = all.jobs, 
