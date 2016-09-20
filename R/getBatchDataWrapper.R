@@ -2,14 +2,13 @@
 # -------------------------------------------------------------------------------------------------
 
 getBatchDataWrapper = function(data.id) {
-  
-  dataset = tryCatch({
-      cat("Getting OML Dataset: ", data.id, "\n")
-      getOMLDataSet(did = data.id)
-    }, error = function(e) {
-     cat("Error: reading dataset ", data.id, "\n")
-     NULL
-  })
+ 
+  dataset = try(getOMLDataSet(data.id = data.id), silent = TRUE)
+  if (inherits(task, "try-error")) {
+    setOMLConfig(arff.reader = "RWeka")
+    dataset = getOMLDataSet(data.id = data.id)
+    setOMLConfig(arff.reader = "farff")
+  }
 
    # Standardazing the data
   dataset = dataStandardization(dataset)

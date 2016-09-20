@@ -3,7 +3,7 @@
 
   devtools::load_all()
 
-  # unlink("test-files/", recursive = TRUE)
+  unlink("test-files/", recursive = TRUE)
   reg = makeExperimentRegistry(
     id = "test", 
     packages = c("ParamHelpers", "mlr", "OpenML"), 
