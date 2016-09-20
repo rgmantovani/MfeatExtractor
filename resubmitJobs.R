@@ -12,7 +12,8 @@ resubmitJobs = function() {
   )
 
   catf(" * There are remaining jobs or new ones ...")
-  all.jobs = setdiff(findNotDone(reg), findErrors(reg))
+  all.jobs = findNotDone(reg)
+  #setdiff(findNotDone(reg), findErrors(reg))
 
   submitJobs(reg = reg, ids = all.jobs, job.delay = TRUE)
   status = waitForJobs(reg = reg, ids = all.jobs)
