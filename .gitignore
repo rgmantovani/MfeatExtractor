@@ -4,8 +4,10 @@
 .Rapp.history
 .Rbuildignore
 *.txt 
+*.log
 
-R/dcol/
+R/dcol/*
+R/dcol
 
 debug.R
 
@@ -15,3 +17,4 @@ debug.R
 output/
 backup/
 error/
+.*.arff

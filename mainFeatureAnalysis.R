@@ -20,7 +20,7 @@ main = function() {
 
   # For testing purporses
   data.ids = getTaggedDatasets(tag = "study_14")
-  data.ids = setdiff(data.ids, 4135)
+  data.ids = setdiff(data.ids, REMOVE.DATA)
 
   # Creating new jobs
   new.jobs = batchmark(reg = reg, data.id = data.ids, overwrite = TRUE)
