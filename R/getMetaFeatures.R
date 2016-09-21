@@ -1,7 +1,8 @@
 # ---------------------------------------------------------------------------
 # ---------------------------------------------------------------------------
 
-getMetaFeatures = function(dataset, statlog = TRUE, complex = TRUE, network = TRUE) {
+getMetaFeatures = function(dataset, statlog = TRUE, complex = TRUE, 
+  network = TRUE) {
 
   cat(" * Getting features ... \n")
   dataset.dir = paste0("temp/", dataset$desc$id, "_", dataset$desc$name)
@@ -55,7 +56,7 @@ getMetaFeatures = function(dataset, statlog = TRUE, complex = TRUE, network = TR
     ret = c(ret, cnet)
   }
  
-	return(ret)
+  return(ret)
 }
 
 # ---------------------------------------------------------------------------

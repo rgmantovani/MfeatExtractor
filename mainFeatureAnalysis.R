@@ -21,6 +21,7 @@ main = function() {
   # For testing purporses
   data.ids = getTaggedDatasets(tag = "study_14")
   data.ids = setdiff(data.ids, REMOVE.DATA)
+  populateOMLCache(data.ids = data.ids, overwrite = FALSE)
 
   # Creating new jobs
   new.jobs = batchmark(reg = reg, data.id = data.ids, overwrite = TRUE)
@@ -40,12 +41,11 @@ main = function() {
   submitJobs(
     reg = reg, 
     ids = all.jobs, 
-    resources = list(memory = 8 * 1024),
+    resources = list(memory = 8 * 1024, walltime = 3600 * 8),
     job.delay = TRUE
   )
   
   status = waitForJobs(reg = reg, ids = all.jobs)
-
   # reducing results and saving output
   reducingResults(reg = reg)
   catf(" * Done.")

@@ -7,7 +7,7 @@ getTaggedDatasets = function(tag) {
   datasets$dim = datasets$NumberOfInstances * datasets$NumberOfFeatures
   datasets = datasets[ order(datasets$dim, decreasing = FALSE), ]
 
-  return(datasets$did)
+  return(datasets$data.id)
 }
 
 # -------------------------------------------------------------------------------------------------

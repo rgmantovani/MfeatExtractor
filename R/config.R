@@ -11,7 +11,6 @@ library("irr")
 library("rpart")
 library("rrcov")
 library("igraph")
-
 library("OpenML")
 library("mlr")
 library("BBmisc")
@@ -26,9 +25,7 @@ GET.STATLOG = TRUE
 GET.COMPLEX = TRUE
 GET.NETWORK = FALSE
 
-# OpenML settings
 # Please, replace it by your own OpenML apikey
-# saveOMLConfig(apikey = "your openml api key", overwrite = TRUE)
 saveOMLConfig(apikey = "76444ac061f2b76258c96f680f0c6ae0", overwrite = TRUE)
 setOMLConfig(arff.reader = "farff")
 
@@ -58,6 +55,7 @@ CNET = c("edges", "degree", "density", "maxComp", "closeness", "betweenness", "c
 # Removing these meta-features
 REMOVE = c("lda", "ldaTime",  "nnSd", "lMin")
 
+# removing data
 REMOVE.DATA = c(292, 383, 350, 386, 389, 392, 393, 394, 396, 399, 401, 1128, 1130, 
   1134, 1137, 1138, 1139, 1145, 1158, 1161, 1165, 1166, 1233, 1457, 4135)
 

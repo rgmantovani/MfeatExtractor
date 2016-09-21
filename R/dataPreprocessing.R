@@ -26,7 +26,6 @@ dataStandardization = function(dataset) {
 # ---------------------------------------------------------------------------
  
 removeConsFeat = function(dataset) {
-
   uniquelength = sapply(dataset$data, function(x) length(unique(x)))
   dataset$data = subset(dataset$data, select = uniquelength > 1)
   return (dataset)
@@ -43,7 +42,8 @@ dataPreprocessing = function(dataset){
   catf("   - Data imputation required ... \n")
   temp = impute(
     obj = dataset$data, 
-    classes = list(numeric = imputeMean(), factor = imputeMode())
+    classes = list(numeric = imputeMedian(), factor = imputeMode()),
+    dummy.classes = c("numeric", "factor")
   )
   
   dataset$data = temp$data
@@ -54,9 +54,10 @@ dataPreprocessing = function(dataset){
 # ---------------------------------------------------------------------------
 
 puttingInStandard = function(dataset){
+  
   for(i in 1:(ncol(dataset$data))-1){
     if(class(dataset$data[,i]) == "factor") {
-      dataset$data[,i] = as.numeric(dataset$data[,i]);
+      dataset$data[,i] = as.numeric(dataset$data[,i])
     }
   }
   return(dataset)

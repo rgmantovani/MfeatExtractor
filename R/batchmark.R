@@ -29,7 +29,7 @@ batchmark = function(reg, data.id, overwrite = FALSE) {
       addAlgorithm(reg = reg, id = id, fun = apply.fun, overwrite = overwrite)
       makeDesign(id = id)
     },
-    id = "mfeat" # 
+    id = "mfeat" 
   )
 
   # Creating jobs
