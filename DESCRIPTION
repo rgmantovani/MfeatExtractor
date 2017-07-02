@@ -6,6 +6,9 @@ Depends:
   R (>= 3.2.3), 
   mfe, 
   mlr,
-  checkmate 
-License: What license is it under?
+  checkmate,
+  igraph,
+  kernlab,
+  RSNNS
+License: LGPL-3
 LazyData: true
