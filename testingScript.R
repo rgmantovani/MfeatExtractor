@@ -3,10 +3,19 @@
 
   devtools::load_all()
 
-  datafile = "nursery.arff"
+  datafile = "nursery"
   option   = "pca"
 
-  data = RWeka::read.arff(file = paste0("data/", datafile, ".arff"))
+  data = RWeka::read.arff(file = paste0("data/datasets/", datafile, ".arff"))
+
+  mfe.feat = getMfeFeatures(data = data) # OK :)
+
+  # data compl
+
+  # cnet
+
+  # pca 
+
 
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------

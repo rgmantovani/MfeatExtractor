@@ -5,6 +5,8 @@ runExtraction = function(datafile, option = "all") {
 
   data = RWeka::read.arff(file = paste0("data/datasets/", datafile, ".arff"))
 
+  dir.create(path = paste0("mfeats/", datafile), showWarning = FALSE, recursive = TRUE)
+
   # -----------------------------------------
   #  Obtaining preprocessed data, if required
   # -----------------------------------------
@@ -26,9 +28,11 @@ runExtraction = function(datafile, option = "all") {
   # -----------------------------------------
 
   if(option == "mfe" | option == "all") {
+    
     cat(" - extracting: Traditional meta-features\n")
     
     mfe.feat = getMfeFeatures(data = data)
+    save(mfe.feat, file = paste0(mfeat))
 
     # _ saving 
 
