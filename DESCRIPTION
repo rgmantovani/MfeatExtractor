@@ -1,8 +1,11 @@
-Package: MfeatAnalysis
-Title: What the Package Does (one line, title case)
+Package: MfeatExtractor
+Title: Extract meta-features from classification datasets
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.2.3)
+Authors@R: person("Rafael", "Mantovani", email = "rgmantovani@gmail.com", role = c("aut", "cre"))
+Depends: 
+  R (>= 3.2.3), 
+  mfe, 
+  mlr,
+  checkmate 
 License: What license is it under?
 LazyData: true

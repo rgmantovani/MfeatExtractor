@@ -1,20 +1,11 @@
-# History files
-
 .Rhistory
 .Rapp.history
 .Rbuildignore
+
 *.txt 
 *.log
 
-R/dcol/*
-R/dcol
+src/
+data/
 
-debug.R
-
-*-files/
-
-# temporary files
-output/
-backup/
-error/
 .*.arff

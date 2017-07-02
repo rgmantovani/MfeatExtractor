@@ -1,19 +1,12 @@
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------
 
-TODO list:
+# lists all datasets in mfeat dir binding mfeats into a data frame object
+# return it and save at the disk
 
-- [tests/] Add Unit tests
+joinMfeats = function() {
 
-- One job per type of feature
-
-- Walltime and memory costs
-
-- Add a function to check frequently if there is any new dataset, and extract its meta-features
-
-- [PRIORITY] Each subset of features will be treated as a learner
-
-- Join with the Timing features used with Tomas script
+}
 
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------

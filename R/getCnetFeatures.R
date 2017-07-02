@@ -115,9 +115,12 @@ getCompNetworkFeatures = function(data, epson) {
 
   aux = ennSup(data, epson)
   graph = igraph::graph.adjacency(aux, mode = "undirected")
-  tmp = c(basic(graph), density(graph), componets(graph), centrality(graph), between(graph), 
-    hub(graph), clusterCof(graph))
-	
+  tmp = c(basic(graph), density(graph), componets(graph), centrality(graph), 
+    between(graph), hub(graph), clusterCof(graph))
+
+  names(tmp) = c("edges", "degree", "density", "maxComp", "closeness", "betweenness", 
+    "clsCoef", "hubs", "avgPath")
+
   return(tmp)
 }
 

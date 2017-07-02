@@ -23,6 +23,9 @@ Istalling it ...
 devtools::install_github("rgmantovani/MfeatExtractor")
 ```
 
+- compile dcol 
+- mode to the R/dcol subdir
+
 ### Running the code
 
 To run the project, execute it by the command:
