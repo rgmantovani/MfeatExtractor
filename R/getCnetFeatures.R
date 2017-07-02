@@ -111,10 +111,10 @@ ennSup = function(data, epson) {
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------
 
-getCompNetworkFeatures = function(data, epson) {
+getCompNetworkFeatures = function(data, epson = 0.15) {
 
   aux = ennSup(data, epson)
-  graph = igraph::graph.adjacency(aux, mode = "undirected")
+  graph = igraph::graph.adjacency(adjmatrix = aux, mode = "undirected")
   tmp = c(basic(graph), density(graph), componets(graph), centrality(graph), 
     between(graph), hub(graph), clusterCof(graph))
 

@@ -3,15 +3,30 @@
 
 runExtraction = function(datafile, option = "all") {
 
-  # read dataset
-  # preprocessing is required just for comp ?
-  #   - check if there is a correspondent dataset version at preprocessed subdir
-  #   - if no, calls preprocessing
-  #   - save the new version at the preprocessed subdir
+  data = RWeka::read.arff(file = paste0("data/datasets/", datafile, ".arff"))
 
+  # -----------------------------------------
+  #  Obtaining preprocessed data, if required
+  # -----------------------------------------
+
+  pre.data = NULL
+  if(option %in% c("comp", "pca", "all")) {
+
+    pre.file = paste0("data/preprocessed/", datafile, ".arff")
+    if(file.exists(pre.file)) {
+      pre.data = RWeka::read.arff(file = pre.file)
+    } else {
+      pre.data = preProcessing(data = data)
+      RWeka::write.arff(x = pre.data, file = pre.file)
+    }
+  }
+
+  # -----------------------------------------
+  # Extracting meta-features
+  # -----------------------------------------
 
   if(option == "mfe" | option == "all") {
-    cat(" - extracting: mfe meta-features\n")
+    cat(" - extracting: Traditional meta-features\n")
     
     mfe.feat = getMfeFeatures(data = data)
 
@@ -20,14 +35,14 @@ runExtraction = function(datafile, option = "all") {
   }
 
   if(option == "cnet" | option == "all") {
-    cat(" - extracting: cnet meta-features\n")
+    cat(" - extracting: Complex Network meta-features\n")
 
     cnet.feat = getCnetFeatures(data = data)
 
   }
 
   if(option == "comp" | option == "all") {
-    cat(" - extracting: comp meta-features\n")
+    cat(" - extracting: Data Complexity meta-features\n")
 
     # get preprocessed dataset
 
@@ -38,7 +53,7 @@ runExtraction = function(datafile, option = "all") {
   }
 
   if(option == "pca" | option == "all") {
-    cat(" - extracting: pca meta-features\n")
+    cat(" - extracting: PCA meta-features\n")
   
     # get preprocessed dataset
     pca.feat = getPCAFeatures(data = data)
