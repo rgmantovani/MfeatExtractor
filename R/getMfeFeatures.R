@@ -7,7 +7,8 @@ getMfeFeatures = function(data) {
   general = tryCatch({
     unlist(mfe::mf.general(formula = as.formula("Class ~ ."), data = data))
   }, error = function(err) {
-    cat("    * got some error - handling with NAs ... \n")
+    cat("    * got some error - returning empty vector ... \n")
+    print(err)
     return(numeric(0))
   })
 
@@ -15,7 +16,8 @@ getMfeFeatures = function(data) {
   statistical = tryCatch({
     unlist(mfe::mf.statistical(formula = as.formula("Class ~ ."), data = data))
  }, error = function(err) {
-    cat("    * got some error - handling with NAs ... \n")
+    cat("    * got some error - returning empty vector ... \n")
+    print(err)
     return(numeric(0))
   })
 
@@ -23,7 +25,8 @@ getMfeFeatures = function(data) {
   model.based = tryCatch({
     unlist(mfe::mf.model.based(formula = as.formula("Class ~ ."), data = data))
   }, error = function(err) {
-    cat("    * got some error - handling with NAs ... \n")
+    cat("    * got some error - returning empty vector ... \n")
+    print(err)
     return(numeric(0))
   })
 
@@ -31,7 +34,8 @@ getMfeFeatures = function(data) {
   infotheo = tryCatch({
     unlist(mfe::mf.infotheo(formula = as.formula("Class ~ ."), data = data))
   }, error = function(err) {
-    cat("    * got some error - handling with NAs ... \n")
+    cat("    * got some error - returning empty vector ... \n")
+    print(err)
     return(numeric(0))
   })
 
@@ -39,7 +43,8 @@ getMfeFeatures = function(data) {
   discriminant = tryCatch({
     unlist(mfe::mf.discriminant(formula = as.formula("Class ~ ."), data = data))
  }, error = function(err) {
-    cat("    * got some error - handling with NAs ... \n")
+    cat("    * got some error - returning empty vector ... \n")
+    print(err)
     return(numeric(0))
   })
 
@@ -47,7 +52,8 @@ getMfeFeatures = function(data) {
   landmarking = tryCatch({
     unlist(mfe::mf.landmarking(formula = as.formula("Class ~ ."), data = data))
   }, error = function(err) {
-    cat("    * got some error - handling with NAs ... \n")
+    cat("    * got some error - returning empty vector ... \n")
+    print(err)
     return(numeric(0))
   })
 

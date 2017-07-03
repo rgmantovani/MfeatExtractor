@@ -41,11 +41,17 @@ runExtraction = function(datafile, option = "all") {
   if(option == "comp" | option == "all") {
     cat(" * Extracting: Data Complexity meta-features\n")
     comp.file = paste0("mfeats/", datafile, "/dataCompFeatures.RData")
+    
     if(file.exists(file = comp.file)) {
       cat("   - skipping, feature file already exists\n")
     } else {
-      # TODO: add try cath here ?
-      comp = getCompFeatures(data = pre.data)
+      comp = tryCatch({
+        getCompFeatures(data = pre.data)
+      }, error = function(err) {
+        cat("    * got some error - returning empty vector ... \n")
+        print(err)
+        return(numeric(0))
+      })
       save(comp, file = comp.file)
     }
   }
@@ -57,8 +63,13 @@ runExtraction = function(datafile, option = "all") {
     if(file.exists(file = cnet.file)) {
       cat("   - skipping, feature file already exists\n")
     } else {
-      # TODO: add try cath here
-      cnet = getCnetFeatures(data = data, epson = 0.15)
+      cnet = tryCatch({
+        getCnetFeatures(data = data, epson = 0.15)
+      }, error = function(err) {
+        cat("    * got some error - returning empty vector ... \n")
+        print(err)
+        return(numeric(0))
+      })
       save(cnet, file = cnet.file)
     }
   }
@@ -70,8 +81,13 @@ runExtraction = function(datafile, option = "all") {
     if(file.exists(file = pca.file)) {
       cat("   - skipping, feature file already exists\n")
     } else {
-      # TODO: add try cath here ?
-      pca.feat = getPCAFeatures(data = pre.data)
+      pca.feat = tryCatch({
+        getPCAFeatures(data = pre.data)
+      }, error = function(err) {
+        cat("    * got some error - returning empty vector ... \n")
+        print(err)
+        return(numeric(0))
+      })
       save(pca.feat, file = pca.file)
     }
   }
