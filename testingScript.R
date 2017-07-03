@@ -3,19 +3,32 @@
 
   devtools::load_all()
 
-  datafile = "nursery"
-  option   = "pca"
+  datafile = "13_breast-cancer"
+  datafile = "61_iris.arff"
+  option   = "all"
 
-  data = RWeka::read.arff(file = paste0("data/datasets/", datafile, ".arff"))
+  cat(" ---------------------------- \n")
+  cat(" ** Meta-features extractor ** \n")
+  cat(" ---------------------------- \n")
 
-  mfe.feat = getMfeFeatures(data = data) # OK :)
+  cat(paste0(" - Datafile: \t", datafile, "\n"))
+  cat(paste0(" - Features: \t", option, "\n"))
+  cat(" ---------------------------- \n")
 
-  # data compl
+  runExtraction(datafile = datafile, option = option)
 
-  # cnet
+  cat("* Finished!\n")
+  cat(" ---------------------------- \n")
 
-  # pca 
+  # *** checking functions individually ***
 
+  # data = RWeka::read.arff(file = paste0("data/datasets/", datafile, ".arff"))
+  # pre.data = preProcessing(data = data)
+  
+  # mfe.feat = getMfeFeatures(data = data)
+  # comp     = getCompFeatures(data = pre.data)
+  # cnet     = getCnetFeatures(data = data)
+  # pca.feat = getPCAFeatures(data = pre.data)
 
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------

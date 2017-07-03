@@ -10,12 +10,19 @@ mainExtraction = function(datafile, option) {
   assertChoice(x = datafile, choices = c("all"))
   assertChoice(x = option, choices = c("mfe", "cnet", "comp", "pca", "all"))
 
+  cat(" ---------------------------- \n")
+  cat(" ** Meta-features extractor ** \n")
+  cat(" ---------------------------- \n")
+
   cat(paste0(" - Datafile: \t", datafile, "\n"))
   cat(paste0(" - Features: \t", option, "\n"))
+  cat(" ---------------------------- \n")
 
   runExtraction(datafile = datafile, option = option)
 
   cat("Finished!")
+  cat(" ---------------------------- \n")
+
 }
 
 # -------------------------------------------------------------------------------------------------

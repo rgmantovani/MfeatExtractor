@@ -31,7 +31,7 @@ runExtraction = function(datafile, option = "all") {
     cat(" * Extracting: Traditional meta-features\n")
     mfe.file = paste0("mfeats/", datafile, "/mfeFeatures.RData")
     if(file.exists(file = mfe.file)) {
-      cat(" * file already exists - skipping \n")
+      cat("   - skipping, feature file already exists\n")
     } else {
       mfe.feat = getMfeFeatures(data = data)
       save(mfe.feat, file = mfe.file)
@@ -42,8 +42,9 @@ runExtraction = function(datafile, option = "all") {
     cat(" * Extracting: Data Complexity meta-features\n")
     comp.file = paste0("mfeats/", datafile, "/dataCompFeatures.RData")
     if(file.exists(file = comp.file)) {
-      cat(" * file already exists - skipping \n")
+      cat("   - skipping, feature file already exists\n")
     } else {
+      # TODO: add try cath here ?
       comp = getCompFeatures(data = pre.data)
       save(comp, file = comp.file)
     }
@@ -54,8 +55,9 @@ runExtraction = function(datafile, option = "all") {
     cat(" * Extracting: Complex Network meta-features\n")
     cnet.file = paste0("mfeats/", datafile, "/compNetFeatures.RData")
     if(file.exists(file = cnet.file)) {
-      cat(" * file already exists - skipping \n")
+      cat("   - skipping, feature file already exists\n")
     } else {
+      # TODO: add try cath here
       cnet = getCnetFeatures(data = data, epson = 0.15)
       save(cnet, file = cnet.file)
     }
@@ -66,8 +68,9 @@ runExtraction = function(datafile, option = "all") {
     cat(" * Extracting: PCA meta-features\n")
     pca.file = paste0("mfeats/", datafile, "/pcaFeatures.RData")
     if(file.exists(file = pca.file)) {
-      cat(" * file already exists - skipping \n")
+      cat("   - skipping, feature file already exists\n")
     } else {
+      # TODO: add try cath here ?
       pca.feat = getPCAFeatures(data = pre.data)
       save(pca.feat, file = pca.file)
     }
