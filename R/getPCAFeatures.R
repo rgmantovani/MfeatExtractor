@@ -10,7 +10,10 @@ getPCAFeatures = function(data, sigma = 0.1) {
   
   pca = kernlab::kpca(~., data = data, kernel = "rbfdot", 
     kpar = list(sigma=sigma), th = 0)
-  return(pca@eig)
+  ret = pca@eig
+  names(ret) = paste0("PCA.", names(ret))
+  
+  return(ret)
 }
 
 # -------------------------------------------------------------------------------------------------

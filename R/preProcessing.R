@@ -19,10 +19,10 @@ preProcessing = function(data) {
     )
     data = imp$data
   }
-    
-  data = mlr::createDummyFeatures(obj = data, target = "Class", method = "1-of-n")
-  class = data[,ncol(data)]
-  data = data[,1:ncol(data)-1]
+
+  class.id = which(colnames(data) == "Class")
+  class = data[, class.id]
+  data  = data[,-class.id]
 
   # remove constant attributes
   for(i in colnames(data)) {  

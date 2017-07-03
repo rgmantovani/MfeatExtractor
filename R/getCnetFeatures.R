@@ -111,7 +111,7 @@ ennSup = function(data, epson) {
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------
 
-getCompNetworkFeatures = function(data, epson = 0.15) {
+getCnetFeatures = function(data, epson = 0.15) {
 
   aux = ennSup(data, epson)
   graph = igraph::graph.adjacency(adjmatrix = aux, mode = "undirected")

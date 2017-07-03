@@ -60,7 +60,7 @@ getCompFeatures = function(data) {
     dcol[,REPLACE] = cxReplace(name)
   }
   cxRemove(name)
-  return(as.numeric(dcol))
+  return(dcol)
 }
 
 # -------------------------------------------------------------------------------------------------
