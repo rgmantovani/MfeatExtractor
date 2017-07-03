@@ -3,20 +3,32 @@
 
   devtools::load_all()
 
-  datafile = "13_breast-cancer"
-  datafile = "61_iris.arff"
-  option   = "all"
+  # datafile = "13_breast-cancer"
+  # datafile = "61_iris.arff"
+  # datafile = "1037_ada_prior"
+  option   = "pca"
 
-  cat(" ---------------------------- \n")
-  cat(" ** Meta-features extractor ** \n")
-  cat(" ---------------------------- \n")
+  # cat(" ---------------------------- \n")
+  # cat(" ** Meta-features extractor ** \n")
+  # cat(" ---------------------------- \n")
 
-  cat(paste0(" - Datafile: \t", datafile, "\n"))
-  cat(paste0(" - Features: \t", option, "\n"))
-  cat(" ---------------------------- \n")
+  # runExtraction(datafile = datafile, option = option)    
 
-  runExtraction(datafile = datafile, option = option)
+# -------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------
 
+  all.files = list.files("data/datasets/")
+  files =  gsub(x = all.files, pattern=".arff", replacement="")
+
+  for(datafile in files) {
+    
+    cat(paste0(" - Datafile: \t", datafile, "\n"))
+    cat(paste0(" - Features: \t", option, "\n"))
+    cat(" ---------------------------- \n")
+
+    runExtraction(datafile = datafile, option = option)    
+  }
+  
   cat("* Finished!\n")
   cat(" ---------------------------- \n")
 
