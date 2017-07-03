@@ -12,6 +12,4 @@ aux.R
 
 *.csv
 *.arff
-*.RData
-*.Rdata
-*.Rda
+mfeatures_*
