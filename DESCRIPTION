@@ -9,7 +9,8 @@ Depends:
   checkmate,
   igraph,
   kernlab,
-  RSNNS,
+  RSNNS
+Suggests: 
   OpenML
 License: LGPL-3
 LazyData: true

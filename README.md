@@ -24,6 +24,9 @@ devtools::install_github("rgmantovani/MfeatExtractor")
 ```
 
 - compile dcol 
+
+First, download and compile the [DCol](http://dcol.sourceforge.net/) library and place the resultant binary file (dcol) into the ```src``` subdirectory. If the ```src``` folder does not exist, create it, and save the binary file there.
+
 - mode to the R/dcol subdir
 
 ### Running the code
