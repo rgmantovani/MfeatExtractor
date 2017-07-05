@@ -4,6 +4,7 @@
 
 *.txt 
 *.log
+*.zip 
 
 src/
 data/
