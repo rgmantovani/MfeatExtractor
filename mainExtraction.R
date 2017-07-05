@@ -6,8 +6,8 @@ mainExtraction = function(datafile, option) {
   devtools::load_all()
 
   # Checking input params
-  sub.data = gsub(x = list.files(path = "data/"), pattern = ".arff", replacement = "")
-  assertChoice(x = datafile, choices = c("all"))
+  sub.data = gsub(x = list.files(path = "data/datasets/"), pattern = ".arff", replacement = "")
+  assertChoice(x = datafile, choices = sub.data, .var.name = "datafile")
   assertChoice(x = option, choices = c("mfe", "cnet", "comp", "pca", "all"))
 
   cat(" ---------------------------- \n")
@@ -22,7 +22,6 @@ mainExtraction = function(datafile, option) {
 
   cat("Finished!")
   cat(" ---------------------------- \n")
-
 }
 
 # -------------------------------------------------------------------------------------------------
