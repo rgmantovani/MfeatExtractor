@@ -1,6 +1,8 @@
 # -------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------
 
+# TODO: improve script
+
 # lists all datasets in mfeat dir binding mfeats into a data frame object
 # return it and save at the disk
 
