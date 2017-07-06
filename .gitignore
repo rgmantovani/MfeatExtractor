@@ -14,7 +14,7 @@ out*
 
 aux.R
 R/checkForOMLDatasets.R
-checkDatasets.R
+check.R
 
 *.csv
 *.arff
