@@ -17,11 +17,11 @@ overview = function() {
     cnet = any(grepl("compNetFeatures", inner.files))
     pca  = any(grepl("pcaFeatures", inner.files))
     mfe  = any(grepl("mfeFeatures", inner.files))
+    stat = any(grepl("statlogFeatures", inner.files))
 
-    ret = c(mfe, comp, cnet, pca)
-    names(ret) = c("mfe", "comp", "cnet", "pca")
+    ret = c(mfe, comp, cnet, pca, stat)
+    names(ret) = c("mfe", "comp", "cnet", "pca", "stat")
 
-    #TODO: check mfe categories also
     return(ret)
   })
 

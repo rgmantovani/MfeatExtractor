@@ -9,7 +9,10 @@ Depends:
   checkmate,
   igraph,
   kernlab,
-  RSNNS
+  RSNNS,
+  R.utils,
+  e1071,
+  CORElearn
 Suggests: 
   OpenML
 License: LGPL-3

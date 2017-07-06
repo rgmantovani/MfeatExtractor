@@ -31,6 +31,7 @@ runSingleDataset = function() {
   # *** checking functions individually ***
   devtools::load_all()
   datafile = "13_breast-cancer"
+  
   option   = "all"
   data = RWeka::read.arff(file = paste0("data/datasets/", datafile, ".arff"))
   pre.data = preProcessing(data = data)

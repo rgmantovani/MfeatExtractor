@@ -8,11 +8,13 @@
 
 src/
 data/
+info/
 
 out*
 
 aux.R
 R/checkForOMLDatasets.R
+checkDatasets.R
 
 *.csv
 *.arff

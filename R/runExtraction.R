@@ -38,6 +38,22 @@ runExtraction = function(datafile, option = "all") {
     }
   }
 
+  if(option == "stat" | option == "all") {
+    cat(" * Extracting: Statlog meta-features\n")
+    stat.file = paste0("mfeats/", datafile, "/statlogFeatures.RData")
+    
+    if(file.exists(file = stat.file)) {
+      cat("   - skipping, feature file already exists\n")
+    } else {
+      stat = tryCatch({
+        getStatlogFeatures(data = data)
+      }, error = function(err) {
+        stop(err)
+      })
+      save(stat, file = stat.file)
+    }
+  }
+
   if(option == "comp" | option == "all") {
     cat(" * Extracting: Data Complexity meta-features\n")
     comp.file = paste0("mfeats/", datafile, "/dataCompFeatures.RData")
@@ -48,14 +64,11 @@ runExtraction = function(datafile, option = "all") {
       comp = tryCatch({
         getCompFeatures(data = pre.data)
       }, error = function(err) {
-        cat("    * got some error - returning empty vector ... \n")
-        print(err)
-        return(numeric(0))
+        stop(err)
       })
       save(comp, file = comp.file)
     }
   }
-
 
   if(option == "cnet" | option == "all") {
     cat(" * Extracting: Complex Network meta-features\n")
@@ -66,14 +79,11 @@ runExtraction = function(datafile, option = "all") {
       cnet = tryCatch({
         getCnetFeatures(data = data, epson = 0.15)
       }, error = function(err) {
-        cat("    * got some error - returning empty vector ... \n")
-        print(err)
-        return(numeric(0))
+        stop(err)
       })
       save(cnet, file = cnet.file)
     }
   }
-
 
   if(option == "pca" | option == "all") {
     cat(" * Extracting: PCA meta-features\n")
@@ -84,9 +94,7 @@ runExtraction = function(datafile, option = "all") {
       pca.feat = tryCatch({
         getPCAFeatures(data = pre.data)
       }, error = function(err) {
-        cat("    * got some error - returning empty vector ... \n")
-        print(err)
-        return(numeric(0))
+        stop(err)
       })
       save(pca.feat, file = pca.file)
     }

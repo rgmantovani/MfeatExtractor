@@ -5,10 +5,9 @@ mainExtraction = function(datafile, option) {
 
   devtools::load_all()
 
-  # Checking input params
   sub.data = gsub(x = list.files(path = "data/datasets/"), pattern = ".arff", replacement = "")
   assertChoice(x = datafile, choices = sub.data, .var.name = "datafile")
-  assertChoice(x = option, choices = c("mfe", "cnet", "comp", "pca", "all"))
+  assertChoice(x = option, choices = c("mfe", "cnet", "comp", "pca", "all", "stat"))
 
   cat(" ---------------------------- \n")
   cat(" ** Meta-features extractor ** \n")
@@ -20,7 +19,7 @@ mainExtraction = function(datafile, option) {
 
   runExtraction(datafile = datafile, option = option)
 
-  cat("Finished!")
+  cat("\n - Finished!\n")
   cat(" ---------------------------- \n")
 }
 
