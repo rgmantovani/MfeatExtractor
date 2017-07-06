@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
   before = "R CMD BATCH --no-save --no-restore '--args' --datafile="
   after  = " --option=" + FEATS +" mainExtraction.R out_"
-  log    = ".log &"
+  log    = "_" + FEATS + ".log &"
 
   # binding commands
   commands = [before + data + after + data + log for data in sub]
