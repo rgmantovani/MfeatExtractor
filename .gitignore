@@ -9,6 +9,8 @@
 src/
 data/
 
+out*
+
 aux.R
 R/checkForOMLDatasets.R
 
