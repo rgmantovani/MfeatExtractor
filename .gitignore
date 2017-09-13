@@ -15,6 +15,8 @@ out*
 aux.R
 R/checkForOMLDatasets.R
 check.R
+testing.R
+getDatasets.R
 
 *.csv
 *.arff

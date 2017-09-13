@@ -88,16 +88,16 @@ normalize <- function(data) {
     num_att <- get_num_att(data_2)
     for(col in 1:num_att) {
         if(is.numeric(data[,col])) {
-            min_v = min(data_2[col])
-            max_v = max(data_2[col])
+            min_v = min(data_2[,col])
+            max_v = max(data_2[,col])
             d <- (max_v - min_v)
             if(d == 0) {
                 d <- 1.0
             }
-            data_2[col] <- (data_2[col] - min_v) / d
+            data_2[,col] <- (data_2[,col] - min_v) / d
         }
     }
-    data_2
+    return(data_2)
 }
 
 replace_nominal_column <- function(column, type=1) {

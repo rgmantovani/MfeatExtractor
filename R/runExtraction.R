@@ -12,16 +12,16 @@ runExtraction = function(datafile, option = "all") {
   # -----------------------------------------
 
   pre.data = NULL
-  if(option %in% c("comp", "pca", "all")) {
-
-    pre.file = paste0("data/preprocessed/", datafile, ".arff")
-    if(file.exists(pre.file)) {
-      pre.data = RWeka::read.arff(file = pre.file)
-    } else {
-      pre.data = preProcessing(data = data)
-      RWeka::write.arff(x = pre.data, file = pre.file)
-    }
+  cat(" * Generating a preprocessed version of the dataset\n")
+  # if(option %in% c("comp", "pca", "all", "stat")) {
+  pre.file = paste0("data/preprocessed/", datafile, ".arff")
+  if(file.exists(pre.file)) {
+    pre.data = RWeka::read.arff(file = pre.file)
+  } else {
+    pre.data = preProcessing(data = data)
+    RWeka::write.arff(x = pre.data, file = pre.file)
   }
+  # }
 
   # -----------------------------------------
   # Extracting meta-features
@@ -46,7 +46,11 @@ runExtraction = function(datafile, option = "all") {
       cat("   - skipping, feature file already exists\n")
     } else {
       stat = tryCatch({
-        getStatlogFeatures(data = data)
+        if(any(is.na(data))) {
+          getStatlogFeatures(data = pre.data)
+        } else {
+          getStatlogFeatures(data = data)
+        }
       }, error = function(err) {
         stop(err)
       })
