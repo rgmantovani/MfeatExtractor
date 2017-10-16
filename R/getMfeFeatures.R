@@ -41,7 +41,8 @@ getMfeFeatures = function(data) {
 
   cat("   - mfe discriminant features \n")
   discriminant = tryCatch({
-    unlist(mfe::mf.discriminant(formula = as.formula("Class ~ ."), data = data, features = "all"))
+    unlist(mfe::mf.discriminant(formula = as.formula("Class ~ ."), data = data, 
+      features = mfe::ls.discriminant()[-8])) # sdration raises a segmentation fault on server
  }, error = function(err) {
     cat("    * got some error - returning empty vector ... \n")
     print(err)
