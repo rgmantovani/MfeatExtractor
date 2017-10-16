@@ -5,7 +5,7 @@ getMfeFeatures = function(data) {
 
   cat("   - mfe general features \n")
   general = tryCatch({
-    unlist(mfe::mf.general(formula = as.formula("Class ~ ."), data = data))
+    unlist(mfe::mf.general(formula = as.formula("Class ~ ."), data = data, features = "all"))
   }, error = function(err) {
     cat("    * got some error - returning empty vector ... \n")
     print(err)
@@ -14,7 +14,7 @@ getMfeFeatures = function(data) {
 
   cat("   - mfe statistical features \n")
   statistical = tryCatch({
-    unlist(mfe::mf.statistical(formula = as.formula("Class ~ ."), data = data))
+    unlist(mfe::mf.statistical(formula = as.formula("Class ~ ."), data = data, features = "all"))
  }, error = function(err) {
     cat("    * got some error - returning empty vector ... \n")
     print(err)
@@ -23,7 +23,7 @@ getMfeFeatures = function(data) {
 
   cat("   - mfe model based features \n")
   model.based = tryCatch({
-    unlist(mfe::mf.model.based(formula = as.formula("Class ~ ."), data = data))
+    unlist(mfe::mf.model.based(formula = as.formula("Class ~ ."), data = data, features = "all"))
   }, error = function(err) {
     cat("    * got some error - returning empty vector ... \n")
     print(err)
@@ -32,7 +32,7 @@ getMfeFeatures = function(data) {
 
   cat("   - mfe info theo features \n")
   infotheo = tryCatch({
-    unlist(mfe::mf.infotheo(formula = as.formula("Class ~ ."), data = data))
+    unlist(mfe::mf.infotheo(formula = as.formula("Class ~ ."), data = data, features = "all"))
   }, error = function(err) {
     cat("    * got some error - returning empty vector ... \n")
     print(err)
@@ -41,7 +41,7 @@ getMfeFeatures = function(data) {
 
   cat("   - mfe discriminant features \n")
   discriminant = tryCatch({
-    unlist(mfe::mf.discriminant(formula = as.formula("Class ~ ."), data = data))
+    unlist(mfe::mf.discriminant(formula = as.formula("Class ~ ."), data = data, features = "all"))
  }, error = function(err) {
     cat("    * got some error - returning empty vector ... \n")
     print(err)
@@ -50,7 +50,7 @@ getMfeFeatures = function(data) {
 
   cat("   - mfe landmarking features \n")
   landmarking = tryCatch({
-    unlist(mfe::mf.landmarking(formula = as.formula("Class ~ ."), data = data))
+    unlist(mfe::mf.landmarking(formula = as.formula("Class ~ ."), data = data, features = "all"))
   }, error = function(err) {
     cat("    * got some error - returning empty vector ... \n")
     print(err)

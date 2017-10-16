@@ -13,7 +13,6 @@ runExtraction = function(datafile, option = "all") {
 
   pre.data = NULL
   cat(" * Generating a preprocessed version of the dataset\n")
-  # if(option %in% c("comp", "pca", "all", "stat")) {
   pre.file = paste0("data/preprocessed/", datafile, ".arff")
   if(file.exists(pre.file)) {
     pre.data = RWeka::read.arff(file = pre.file)
@@ -21,8 +20,7 @@ runExtraction = function(datafile, option = "all") {
     pre.data = preProcessing(data = data)
     RWeka::write.arff(x = pre.data, file = pre.file)
   }
-  # }
-
+  
   # -----------------------------------------
   # Extracting meta-features
   # -----------------------------------------
@@ -90,6 +88,13 @@ runExtraction = function(datafile, option = "all") {
   }
 
   if(option == "pca" | option == "all") {
+
+    cat(" * Scaling data for PCA\n")
+    for(i in colnames(pre.data)[-ncol(pre.data)]) {
+      pre.data[,i] = as.numeric(pre.data[,i])
+      pre.data[,i] = RSNNS::normalizeData(pre.data[,i], type = "0_1")
+    } 
+
     cat(" * Extracting: PCA meta-features\n")
     pca.file = paste0("mfeats/", datafile, "/pcaFeatures.RData")
     if(file.exists(file = pca.file)) {
