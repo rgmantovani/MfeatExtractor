@@ -681,7 +681,6 @@ compute_grouped_meta_features <- function(data) {
 
 getStatlogFeatures = function(data) {
   aux = compute_grouped_meta_features(data)
-  # aux = combine(aux)
   return(aux)
 }
 

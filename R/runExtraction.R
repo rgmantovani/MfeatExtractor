@@ -12,13 +12,15 @@ runExtraction = function(datafile, option = "all") {
   # -----------------------------------------
 
   pre.data = NULL
-  cat(" * Generating a preprocessed version of the dataset\n")
-  pre.file = paste0("data/preprocessed/", datafile, ".arff")
-  if(file.exists(pre.file)) {
-    pre.data = RWeka::read.arff(file = pre.file)
-  } else {
-    pre.data = preProcessing(data = data)
-    RWeka::write.arff(x = pre.data, file = pre.file)
+  if(option != "mfe") {
+    cat(" * Generating a preprocessed version of the dataset\n")
+    pre.file = paste0("data/preprocessed/", datafile, ".arff")
+    if(file.exists(pre.file)) {
+      pre.data = RWeka::read.arff(file = pre.file)
+    } else {
+      pre.data = preProcessing(data = data)
+      RWeka::write.arff(x = pre.data, file = pre.file)
+    }
   }
   
   # -----------------------------------------

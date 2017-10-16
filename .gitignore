@@ -18,6 +18,7 @@ check.R
 testing.R
 getDatasets.R
 
+*.zip
 *.csv
 *.arff
 mfeatures_*
